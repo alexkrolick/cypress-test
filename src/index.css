@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,900');
+
+:root {
+  --color-primary: rgb(255, 29, 135);
+  --color-fg: slategray;
+  --color-fg-inverted: yellow;
+  --color-bg: blueviolet;
+  --font-weight-bold: 900;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: 'Poppins', sans-serif;
+}
+
+.heading {
+  background-color: var(--color-primary);
+  color: var(--color-fg-inverted);
+  padding: 1rem;
+  font-weight: var(--font-weight-bold);
+}
