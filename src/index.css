@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,900');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900');
 
 :root {
   --color-primary: rgb(255, 29, 135);
-  --color-fg: slategray;
+  --color-fg: lightgray;
   --color-fg-inverted: yellow;
   --color-bg: blueviolet;
   --font-weight-bold: 900;
@@ -12,6 +12,12 @@ body {
   background-color: var(--color-bg);
   color: var(--color-fg);
   font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.section {
+  padding: 1em;
 }
 
 .heading {
@@ -19,4 +25,13 @@ body {
   color: var(--color-fg-inverted);
   padding: 1rem;
   font-weight: var(--font-weight-bold);
+}
+
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-fg-inverted);
+  padding: 0.5rem 1rem;
+  font-weight: var(--font-weight-bold);
+  font-size: 100%;
+  border: none;
 }

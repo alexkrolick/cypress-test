@@ -1,28 +1,31 @@
 import jestExpect from "expect";
-import { getByText, queryAllByText, waitForElement } from "dom-testing-library";
+import { queryAllByText } from "dom-testing-library";
+import { findByText, findByLabelText } from "dom-testing-addon-async";
+import user from "user-event";
+import * as extendedMatchers from "jest-dom";
+import * as l from "../../src/localized";
 
-// options for async queries
-const ASYNC = {
-  timeout: 3000, // less than the cypress default, 4s
-};
+jestExpect.extend(extendedMatchers);
 
-describe("homepage", function() {
-  it("successfully loads", async function(done) {
-    cy.visit("/").then(async function({ document }) {
-      let app = document.querySelector("#app");
-      let rightHeader = await waitForElement(
-        () => getByText(app, "Hello, world"),
-        ASYNC,
-      );
-      let wrongHeaders = queryAllByText(app, "Hello, moon");
+it("successfully loads", async function(done) {
+  return cy.visit("/").then(async function({ document }) {
+    let app = document.querySelector("#app");
+    let rightHeader = await findByText(app, "Hello, world");
+    let wrongHeaders = queryAllByText(app, "Hello, moon");
+    jestExpect(wrongHeaders).toHaveLength(0);
+    jestExpect(rightHeader).not.toBeNull();
+    done();
+  });
+});
 
-      // Chai assertions report status in the GUI
-      expect(wrongHeaders).to.have.length(0);
-
-      // Jest/Jasmine results only report when they throw
-      jestExpect(rightHeader).not.toBeNull();
-
-      done();
-    });
+it("increments counter", async function(done) {
+  return cy.visit("/").then(async function({ document }) {
+    let app = document.querySelector("#app");
+    let button = await findByText(app, `${l.clickButtonText}`);
+    await user.click(button);
+    jestExpect(
+      await findByLabelText(app, `${l.clickCountLabel}`),
+    ).toHaveTextContent("1");
+    done();
   });
 });
