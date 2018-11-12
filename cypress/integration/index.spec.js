@@ -1,7 +1,6 @@
 import { queryAllByText } from "dom-testing-library";
 import { findByText, findByLabelText } from "dom-testing-addon-async";
 import user from "user-event";
-import * as l from "../../src/localized";
 
 describe("Home page", () => {
   it("successfully loads", async function(done) {
@@ -19,11 +18,10 @@ describe("Home page", () => {
 
   it("increments counter", async function(done) {
     cy.visit("/").then(async function({ document: { body } }) {
-      let button = await findByText(body, `${l.clickButtonText}`);
-      user.click(button); // ideally, would trigger event with cypress
-      expect(
-        await findByLabelText(body, `${l.clickCountLabel}`),
-      ).toHaveTextContent("1");
+      // ideally, would trigger event with cypress,
+      // but use user-event instead because it works with native dom elements
+      user.click(await findByText(body, "Click me"));
+      expect(await findByLabelText(body, "Click count")).toHaveTextContent("1");
       done();
     });
   });
