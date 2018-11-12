@@ -12,6 +12,7 @@ describe("Home page", () => {
       expect(wrongHeaders).to.have.length(0); // chai
       expect(rightHeader).not.toBeNull(); // jest
       expect(rightHeader).to.not.be.null; // chai
+      expect(rightHeader).toBeInTheDocument(); // jest-dom
       done();
     });
   });
