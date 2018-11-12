@@ -79,3 +79,8 @@ typings/
 
 dist
 .cache
+
+# Cypress
+
+cypress/support
+cypress/videos
