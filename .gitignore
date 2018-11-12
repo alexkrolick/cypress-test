@@ -82,5 +82,4 @@ dist
 
 # Cypress
 
-cypress/support
 cypress/videos
