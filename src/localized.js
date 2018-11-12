@@ -1,3 +1,5 @@
+// this is a fake localization framework to abstract the strings a bit
+
 function toString() {
   return this.defaultMessage;
 }
