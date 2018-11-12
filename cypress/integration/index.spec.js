@@ -19,7 +19,7 @@ describe("Home page", () => {
   it("increments counter", async function(done) {
     cy.visit("/").then(async function({ document: { body } }) {
       let button = await findByText(body, `${l.clickButtonText}`);
-      await user.click(button); // ideally, would trigger event with cypress
+      user.click(button); // ideally, would trigger event with cypress
       expect(
         await findByLabelText(body, `${l.clickCountLabel}`),
       ).toHaveTextContent("1");
