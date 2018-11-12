@@ -16,6 +16,14 @@ body {
   font-size: 1.15rem;
 }
 
+a, .link {
+  color: var(--color-fg-inverted);
+}
+
+a:visited, .link:visited {
+  color: var(--color-primary);
+}
+
 .section {
   padding: 1em;
 }
@@ -34,4 +42,5 @@ body {
   font-weight: var(--font-weight-bold);
   font-size: 100%;
   border: none;
+  cursor: pointer;
 }

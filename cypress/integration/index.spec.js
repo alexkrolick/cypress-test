@@ -7,21 +7,30 @@ describe("Home page", () => {
     cy.visit("/").then(async function({ document: { body } }) {
       let rightHeader = await findByText(body, "Hello, world");
       let wrongHeaders = queryAllByText(body, "Hello, moon");
-      expect(wrongHeaders).toHaveLength(0); // jest
       expect(wrongHeaders).to.have.length(0); // chai
-      expect(rightHeader).not.toBeNull(); // jest
-      expect(rightHeader).to.not.be.null; // chai
       expect(rightHeader).toBeInTheDocument(); // jest-dom
       done();
     });
   });
+});
 
+describe("Counter page", () => {
   it("increments counter", async function(done) {
-    cy.visit("/").then(async function({ document: { body } }) {
-      // ideally, would trigger event with cypress,
-      // but use user-event instead because it works with native dom elements
+    cy.visit("/counter").then(async function({ document: { body } }) {
       user.click(await findByText(body, "Click me"));
       expect(await findByLabelText(body, "Click count")).toHaveTextContent("1");
+      done();
+    });
+  });
+});
+
+describe("Navigation", () => {
+  it("can go between pages", async function(done) {
+    cy.visit("/").then(async function({ document: { body } }) {
+      user.click(await findByText(body, "Counter Game"));
+      expect(await findByLabelText(body, "Click count")).toHaveTextContent("0");
+      user.click(await findByText(body, "Home"));
+      expect(body.ownerDocument.location.pathname).to.equal("/");
       done();
     });
   });
