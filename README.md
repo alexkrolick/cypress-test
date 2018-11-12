@@ -9,7 +9,7 @@ Playing around with Cypress, Jest's `expect`, and `dom-testing-library`
   - add [jest-dom](https://github.com/gnapse/jest-dom) assertions like `toHaveTextContent`, `toBeInTheDocument`
 - [index.spec.js](./cypress/integration/index.spec.js): 
   - use `dom-testing-library` inside Cypress without a plugin
-  - trigger events with [user-event] (https://github.com/Gpx/user-event)
+  - trigger events with [user-event](https://github.com/Gpx/user-event)
 
 <img width="775" alt="screen shot 2018-11-11 at 8 21 25 pm" src="https://user-images.githubusercontent.com/1571667/48326832-57a2d100-e5f0-11e8-80ab-2ab2edde5b67.png">
 
